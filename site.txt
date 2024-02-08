@@ -1,0 +1,60 @@
+<!DOCTYPE html>                                                   
+<html>                                         
+    <head>
+        <title>masina</title>
+    </head>
+    <body>
+        <script>
+            function key_callback(){
+                document.addEventListener('keydown', function(event){
+                if (event.key == \"w\" || event.key == \"W\") {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open(\"POST\", \"/W\");
+                    xhr.send(\"\");
+                }
+                if (event.key == \"s\" || event.key == \"S\") {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open(\"POST\", \"/S\");
+                    xhr.send(\"\");
+                }
+                if (event.key == \"a\" || event.key == \"A\") {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open(\"POST\", \"/A\");
+                    xhr.send(\"\");
+                }
+                if (event.key == \"d\" || event.key == \"D\") {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open(\"POST\", \"/D\");
+                    xhr.send(\"\");
+                }
+                if (event.key == \"b\" || event.key == \"B\") {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open(\"POST\", \"/B\");
+                    xhr.send(\"\");
+                }
+                if (event.key == \"n\" || event.key == \"N\") {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open(\"POST\", \"/N\");
+                    xhr.send(\"\");
+                }
+                if (event.key == \"q\" || event.key == \"Q\") {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open(\"POST\", \"/Q\");
+                    xhr.send(\"\");
+                }
+                if (event.key == \"e\" || event.key == \"E\") {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open(\"POST\", \"/E\");
+                    xhr.send(\"\");
+                }
+                if (event.key == \"f\" || event.key == \"F\") {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open(\"POST\", \"/F\");
+                    xhr.send(\"\");
+                }
+                }, true);
+            }
+            key_callback();
+        </script>
+    </body>
+</html>
