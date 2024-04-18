@@ -4,10 +4,10 @@
 #include <ESP8266mDNS.h>
 #include <EEPROM.h>
 
-const char* ssid     = "StarNet - vition.alexandru_EXT";
-const char* password = "485754430522A3A2";
+const char* ssid     = "10 Ron - ora"; //http://192.168.101.52/
+const char* password = "asdfghjkl";
 
-String ptr  = "<!DOCTYPE html>                                                   <html>                                             <head>        <title>masina</title>    </head>    <body>        <script>            function key_callback(){                document.addEventListener('keydown', function(event){                if (event.key == \"w\" || event.key == \"W\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/W\");                    xhr.send(\"\");                }                if (event.key == \"s\" || event.key == \"S\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/S\");                    xhr.send(\"\");                }                if (event.key == \"a\" || event.key == \"A\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/A\");                    xhr.send(\"\");                }                if (event.key == \"d\" || event.key == \"D\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/D\");                    xhr.send(\"\");                }                if (event.key == \"b\" || event.key == \"B\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/B\");                    xhr.send(\"\");                }                if (event.key == \"n\" || event.key == \"N\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/N\");                    xhr.send(\"\");                }                if (event.key == \"q\" || event.key == \"Q\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/Q\");                    xhr.send(\"\");                }                if (event.key == \"e\" || event.key == \"E\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/E\");                    xhr.send(\"\");                }                if (event.key == \"f\" || event.key == \"F\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/F\");                    xhr.send(\"\");                }                }, true);            }            key_callback();        </script>    </body></html>";
+String ptr  = "<!DOCTYPE html>                                                   <html>                                             <head>        <title>masina</title>    </head>    <body>        <script>            function key_callback(){                document.addEventListener('keydown', function(event){                if (event.key == \"w\" || event.key == \"W\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/W\");                    xhr.send(\"\");                }                if (event.key == \"s\" || event.key == \"S\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/S\");                    xhr.send(\"\");                }                if (event.key == \"a\" || event.key == \"A\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/A\");                    xhr.send(\"\");                }                if (event.key == \"d\" || event.key == \"D\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/D\");                    xhr.send(\"\");                }                if (event.key == \"b\" || event.key == \"B\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/B\");                    xhr.send(\"\");                }                if (event.key == \"n\" || event.key == \"N\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/N\");                    xhr.send(\"\");                }                if (event.key == \"q\" || event.key == \"Q\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/Q\");                    xhr.send(\"\");                }                if (event.key == \"e\" || event.key == \"E\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/E\");                    xhr.send(\"\");                }                if (event.key == \"f\" || event.key == \"F\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/F\");                    xhr.send(\"\");                }  if (event.key == \"i\" || event.key == \"I\") {                    const xhr = new XMLHttpRequest();                    xhr.open(\"POST\", \"/I\");                    xhr.send(\"\");                }                }, true);            }            key_callback();        </script>    </body></html>";
 
 ESP8266WebServer server(80);
 
@@ -105,6 +105,18 @@ void handleE() {
   Serial.println("E");
 }
 
+void handleI() {
+  switch(p){
+    case 3:
+      p = 0;
+      break;
+    default:
+      p = 3;
+      break;
+  }
+  Serial.println("I");
+}
+
 void handleF() {
   switch(f){
     case false:
@@ -149,6 +161,7 @@ void setup() {
   server.on("/F", HTTP_POST, handleF);  
   server.on("/Q", HTTP_POST, handleE);
   server.on("/E", HTTP_POST, handleQ);
+  server.on("/I", HTTP_POST, handleI);
   server.on("/", handleRoot);
   server.onNotFound(handleNotFound);
 
@@ -184,6 +197,9 @@ void loop() {
         digitalWrite(14, LOW);
         digitalWrite(16, HIGH);
         break;
+      case 3:
+        digitalWrite(14, HIGH);
+        digitalWrite(16, HIGH);
     }
     if(tim == 10000){
       onoff = !onoff;
